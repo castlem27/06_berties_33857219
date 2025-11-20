@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet"  type="text/css" href="/main.css" />
+        <title><%=shopData.shopName%></title>
+    </head>
+    <body>
+        <h1><%=shopData.shopName%> Store</h1>
+        <h2>These are all the users</h2>
+        <ul>
+             <% users.forEach(user => { %>
+            <li>
+                <strong><%= user.username %></strong>
+            </li>
+            <% }) %>
+        </ul>
+    </body>
+</html>

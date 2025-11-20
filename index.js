@@ -1,8 +1,10 @@
 // Import express and ejs
+require('dotenv').config()
 var express = require ('express')
 var ejs = require('ejs')
 var mysql = require('mysql2');
 const path = require('path')
+
 
 // Create the express application object
 const app = express()
@@ -22,13 +24,13 @@ app.locals.shopData = {shopName: "Bertie's Books"}
 
 // Define the database connection pool
 const db = mysql.createPool({
-    host: 'localhost',
-    user: 'berties_books_app',
-    password: 'qwertyuiop',
-    database: 'berties_books',
-    waitForConnections: true,
-    connectionLimit: 10,
-    queueLimit: 0,
+  host: 'localhost',
+  user: process.env.DB_USER,
+  password: process.env.DB_PASS,
+  database: process.env.DB_NAME,
+  waitForConnections: true,
+  connectionLimit: 10,
+  queueLimit: 0,
 });
 global.db = db;
 

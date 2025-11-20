@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head> 
+        <link rel="stylesheet"  type="text/css" href="/main.css" />
+        <title><%=shopData.shopName%></title>
+        </head>
+
+<h1>Login Audit History</h1>
+
+    <table border="1" cellpadding="5">
+        <tr>
+            <th>ID</th>
+            <th>Username</th>
+            <th>Success</th>
+            <th>Time</th>
+        </tr>
+
+        <% audit.forEach(function(row) { %>
+            <tr>
+                <td><%= row.id %></td>
+                <td><%= row.username %></td>
+                <td><%= row.success ? 'Success' : 'Failed' %></td>
+                <td><%= row.time %></td>
+            </tr>
+        <% }) %>
+    </table>
+</body>
+</html>
