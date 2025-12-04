@@ -37,7 +37,17 @@ app.use(session({
 }))
 
 // Define the database connection pool
-const db = mysql.createPool({ host: process.env.BB_HOST, user: process.env.BB_USER, password: process.env.BB_PASSWORD, database: process.env.BB_DATABASE, waitForConnections: true, connectionLimit: 10, queueLimit: 0, }); global.db = db;
+const db = mysql.createPool({
+    host: 'localhost',
+    user: 'berties_books_app',
+    password: 'qwertyuiop',
+    database: 'berties_books',
+    waitForConnections: true,
+    connectionLimit: 10,
+    queueLimit: 0,
+});
+global.db = db;
+
 
 // Load the route handlers
 const mainRoutes = require("./routes/main")
@@ -50,6 +60,9 @@ app.use('/users', usersRoutes)
 // Load the route handlers for /books
 const booksRoutes = require('./routes/books')
 app.use('/books', booksRoutes)
+
+const apiRoutes = require('./routes/api')
+app.use('/api', apiRoutes)
 
 // Start the web app listening
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))
